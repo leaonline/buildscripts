@@ -4,5 +4,5 @@ Loose collection of buildscripts for several tasks.
 
 # License
 
-MIT, SEE [license](./license) file
+MIT, SEE [license](./LICENSE) file
  
