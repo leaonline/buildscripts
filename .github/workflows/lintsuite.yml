@@ -1,0 +1,30 @@
+name: Lint suite
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+
+jobs:
+  lintshell:
+    name: Shellscript lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Lint check
+      uses: azohra/shell-linter@v0.2.0
+
+  lintmarkdown:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    needs: [lintshell]
+    steps:
+    - name: markdownlint-cli
+      uses: nosborn/github-action-markdown-cli@v1.1.1
+      with:
+        files: .
+        use-quiet-mode: yes
+        config_file: ".markdownlint.json"
