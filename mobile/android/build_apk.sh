@@ -5,7 +5,7 @@ cd ..
 METEOR_PROJECT_PATH=$(pwd)
 SERVER="${APPLICATION_NAME}.meteor.com"
 ANDROID_HOME=/usr/lib/android-sdk
-APPLICATION_NAME="$(basename $METEOR_PROJECT_PATH)_Android_Application"
+APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
 
 cd ${METEOR_PROJECT_PATH}
 
