@@ -7,7 +7,7 @@ SERVER="${APPLICATION_NAME}.meteor.com"
 ANDROID_HOME=/usr/lib/android-sdk
 APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
 
-cd ${"METEOR_PROJECT_PATH"} || exit
+cd "${"METEOR_PROJECT_PATH"}" || exit
 
 ANDROID_PLATFORM=${METEOR_PROJECT_PATH}/.meteor/local/cordova-build/platforms/android
 
@@ -56,12 +56,12 @@ yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;25.0.2"
 fi
 
 
-cd ${"METEOR_PROJECT_PATH"} || exit
+cd "${"METEOR_PROJECT_PATH"}" || exit
 
-if [ -d ${"APPLICATION_NAME"} ]; then
-sudo rm -rf ${"APPLICATION_NAME"}
+if [ -d "${"APPLICATION_NAME"}" ]; then
+sudo rm -rf "${"APPLICATION_NAME"}"
 fi
 
-meteor build ${"APPLICATION_NAME"} --server=${SERVER}
+meteor build "${"APPLICATION_NAME"}" --server="${SERVER}"
 
 
