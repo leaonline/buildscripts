@@ -8,7 +8,7 @@ METEOR_PROJECT_PATH=$(pwd)
 
 ANDROID_PLATFORM=${METEOR_PROJECT_PATH}/../.meteor/local/cordova-build/platforms/android
 
-if [ ! -d $ANDROID_PLATFORM ]; then
+if [ ! -d "$ANDROID_PLATFORM" ]; then
   meteor add-platform android
 fi
 
@@ -19,15 +19,15 @@ yes | sudo apt-get install openjdk-8-jdk
 sudo apt update
 yes | sudo apt install android-sdk
 yes | sudo apt-get install unzip
-cd ~
+
+cd ~ || exit
+
 if [ ! -d $ANDROID_HOME/tools/bin ]; then
-wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
-unzip tools_r25.2.3-linux.zip
-rm tools_r25.2.3-linux.zip
-
-sudo rm -rf $ANDROID_HOME/tools
-
-sudo mv tools $ANDROID_HOME/tools
+  wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
+  unzip tools_r25.2.3-linux.zip
+  rm tools_r25.2.3-linux.zip
+  sudo rm -rf $ANDROID_HOME/tools
+  sudo mv tools $ANDROID_HOME/tools
 fi
 
 export ANDROID_HOME=$ANDROID_HOME
@@ -45,9 +45,9 @@ export PATH
 sudo update-alternatives --config java <<< '2'
 sudo update-alternatives --config javac <<< '2'
 
-if [ ! -f $ANDROID_HOME/licenses/android-sdk-license ]; then
+if [ ! -f "$ANDROID_HOME"/licenses/android-sdk-license ]; then
   
-  sudo chown $USER:$USER $ANDROID_HOME -R
-  yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;25.0.2"
+  sudo chown "$USER":"$USER" "$ANDROID_HOME" -R
+  yes | "$ANDROID_HOME"/tools/bin/sdkmanager "build-tools;25.0.2"
 
 fi
