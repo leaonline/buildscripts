@@ -2,7 +2,7 @@
 
 METEOR_PROJECT_PATH=$(pwd)
 SERVER="${APPLICATION_NAME}.meteor.com"
-APPLICATION_NAME="$(basename $METEOR_PROJECT_PATH)_Android_Application"
+APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
 
 cd "${METEOR_PROJECT_PATH}"/.. || exit # go back to root so android project will create on root and not in script folder
 
