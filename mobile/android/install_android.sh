@@ -12,16 +12,23 @@ if [ ! -d "$ANDROID_PLATFORM" ]; then
   meteor add-platform android
 fi
 
-sudo apt-get update 
+echo -e "Update and Upgrade System"
+sudo apt-get update
 sudo apt-get upgrade
+
+echo -e "Install jdk/jre 8" 
 yes | sudo apt-get install openjdk-8-jre
 yes | sudo apt-get install openjdk-8-jdk
 sudo apt update
+
+echo -e "Install android sdk and unzip"
 yes | sudo apt install android-sdk
 yes | sudo apt-get install unzip
 
 cd ~ || exit
 
+
+echo -e "${RED}Download and unpack android tools"
 if [ ! -d $ANDROID_HOME/tools/bin ]; then
   wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
   unzip tools_r25.2.3-linux.zip
@@ -41,10 +48,11 @@ export JAVA_HOME
 export JRE_HOME
 export PATH
 
-
+echo -e "Set Java version to 8"
 sudo update-alternatives --config java <<< '2'
 sudo update-alternatives --config javac <<< '2'
 
+echo -e "Accept Java license"
 if [ ! -f "$ANDROID_HOME"/licenses/android-sdk-license ]; then
   
   sudo chown "$USER":"$USER" "$ANDROID_HOME" -R
