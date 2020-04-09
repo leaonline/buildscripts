@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 METEOR_PROJECT_PATH=$(pwd) # /home/runner/work/buildscripts/buildscripts
-cd simple-todos || exit
+cd ../simple-todos || exit
 echo $(pwd)
 SERVER="${APPLICATION_NAME}.meteor.com"
 APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
