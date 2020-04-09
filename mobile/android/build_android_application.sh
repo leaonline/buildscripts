@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-#METEOR_PROJECT_PATH=$(pwd)
-METEOR_PROJECT_PATH=./simple-todos
+METEOR_PROJECT_PATH=$(pwd)
+echo -e "$METEOR_PROJECT_PATH"
+cd ./simple-todos || exit
 SERVER="${APPLICATION_NAME}.meteor.com"
 APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
 
