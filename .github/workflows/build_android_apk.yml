@@ -32,3 +32,9 @@ jobs:
     - name: Run build_android_application.sh to build android apk from meteor project
       run: ./mobile/android/build_android_application.sh
 
+    - uses: actions/upload-artifact@v1
+      with:
+        name: mobile-build
+        path: buildscripts/mobile/android
+
+
