@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 METEOR_PROJECT_PATH=$(pwd)/simple-todos # /home/runner/work/buildscripts/buildscripts
+ANDROID_HOME= /home/runner/android-sdk
+cd ANDROID_HOME
+android update sdk --no-ui --all --filter android-26
 cd simple-todos || exit
 SERVER="${APPLICATION_NAME}.meteor.com"
 APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
@@ -15,9 +18,11 @@ if [ -d "${APPLICATION_NAME}" ]; then  # check if apk build already exists, if n
 
 fi
 
-ANDROID_HOME= /home/runner/android-sdk
+
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools
 echo $PATH
+
+
 meteor add-platform android
 meteor build "${APPLICATION_NAME}" --server="${SERVER}"
 
