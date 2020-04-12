@@ -35,6 +35,6 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: mobile-build
-        path: /simple-todos
+        path: simple-todos/simple-todos_Android_Application
 
 
