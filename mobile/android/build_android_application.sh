@@ -2,7 +2,7 @@
 
 METEOR_PROJECT_PATH=$(pwd)/simple-todos # /home/runner/work/buildscripts/buildscripts
 ANDROID_HOME= /home/runner/android-sdk
-cd $ANDROID_HOME
+cd /home/runner/android-sdk/tools/bin
 sdkmanager "build-tools;27.0.0"
 cd simple-todos || exit
 SERVER="${APPLICATION_NAME}.meteor.com"
