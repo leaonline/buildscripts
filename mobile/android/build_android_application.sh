@@ -2,8 +2,8 @@
 
 METEOR_PROJECT_PATH=$(pwd)/simple-todos # /home/runner/work/buildscripts/buildscripts
 ANDROID_HOME= /home/runner/android-sdk
-cd ANDROID_HOME
-android update sdk --no-ui
+cd $ANDROID_HOME
+sdkmanager "build-tools;27.0.0"
 cd simple-todos || exit
 SERVER="${APPLICATION_NAME}.meteor.com"
 APPLICATION_NAME="$(basename "$METEOR_PROJECT_PATH")_Android_Application"
