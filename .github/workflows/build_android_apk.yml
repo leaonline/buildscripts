@@ -54,7 +54,7 @@ jobs:
           prerelease: true
     
     - name: Zip folder
-      run: zip -r mobile-build.zip ./simple-todos_Android_Application
+      run: zip -r mobile-build.zip simple-todos/simple-todos_Android_Application
     
     - name: Upload Release Asset
       id: upload-release-asset 
