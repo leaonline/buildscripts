@@ -3,8 +3,11 @@ name: Build_Android_APK
 on:
   push:
     branches: [ release ]
+    tags:
+    - 'v*'
   pull_request:
     branches: [ release ]
+  
 
 jobs:
   build:
@@ -36,11 +39,7 @@ jobs:
       with:
         name: mobile-build
         path: simple-todos/simple-todos_Android_Application
-on:
-  push:
-    tags:
-    - 'v*'
-        
+    
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
