@@ -1,0 +1,28 @@
+name: Build iOS XCode Project
+
+on:
+  push:
+    branches: [ release ]
+  pull_request:
+    branches: [ release ]
+
+    
+jobs:
+  Build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: set up meteor
+      uses: meteorengineer/setup-meteor@v1
+      with:
+        meteor-release: '1.9.1'
+    - run: meteor npm install
+    
+    
+    - name: build ios application
+      run: ./mobile/ios/build_ios_application.sh
+    
+    
+    
+    
