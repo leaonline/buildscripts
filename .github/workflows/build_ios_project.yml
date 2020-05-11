@@ -22,6 +22,11 @@ jobs:
     
     - name: build ios application
       run: ./mobile/ios/build_ios_application
+      
+    - uses: actions/upload-artifact@v1
+      with:
+        name: mobile-build-ios
+        path: simple-todos/simple-todos_ios/ios/project
     
     
     
