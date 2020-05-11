@@ -5,7 +5,7 @@ METEOR_PROJECT_PATH=$(pwd)
 APPLICATION_NAME="$(basename "$METEOR_PROJECT_NAME")_ios"
 SERVER="${APPLICATION_NAME}.meteor.com"
 
-cd $(pwd)/../../"${METEOR_PROJECT_NAME}" || exit # go back to root so ios project will create on root and not in script folder
+cd $(pwd)/"$METEOR_PROJECT_NAME" || exit # go back to root so ios project will create on root and not in script folder
 
 if [ -d "${APPLICATION_NAME}" ]; then  # check if ios build already exists, if not continue. 
 				     # If ios build already exists remove it, otherwise it will throw errors. 
