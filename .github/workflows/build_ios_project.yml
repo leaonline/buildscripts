@@ -21,7 +21,7 @@ jobs:
     
     
     - name: build ios application
-      run: ./mobile/ios/build_ios_application.sh
+      run: ./mobile/ios/build_ios_application
     
     
     
