@@ -13,6 +13,5 @@ if [ -d "${APPLICATION_NAME}" ]; then  # check if ios build already exists, if n
 
 fi
 
-echo $(pwd)
 
 meteor build "${APPLICATION_NAME}" --server="${SERVER}"
