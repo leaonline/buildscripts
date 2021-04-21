@@ -24,39 +24,40 @@ if [[ ! -d "$DESTINATION" ]]; then
 fi
 
 # check if all tools are installed. We need all tools to be installed in order
-allCommands=(
+ALLCOMMANDS=(
   mkeot
   eot2ttf
   sfnt2woff
   woff2_compress
 )
 
-for i in "${allCommands[@]}"
+for CMD in "${ALLCOMMANDS[@]}"
 do
    :
-   if [[! command -v "$i" &> "/dev/null"]];then
-        echo "Cannot convert ($i). The following packages are required: eot-utils eot2ttf woff-tools woff2"
+   if [[ ! -f $(command -v "$CMD") ]];then
+        echo "Cannot convert ($CMD). The following packages are required: eot-utils eot2ttf woff-tools woff2"
         exit 1
     fi
 done
-exit 1
 
 # EOT EXPORT
 EOT_PATH="$DESTINATION/$FILENAME.eot"
-echo "[OTF -> EOT]: (over-)write to $EOT_PATH"
+echo "[OTF ---> EOT]: (over-)write to $EOT_PATH"
 mkeot ${SOURCE} > ${EOT_PATH}
 
 # TTF EXPORT
 TTF_PATH="$DESTINATION/$FILENAME.ttf"
-echo "[EOT -> TTF]: (over-)write to $TTF_PATH"
+echo "[EOT ---> TTF]: (over-)write to $TTF_PATH"
 eot2ttf ${EOT_PATH} ${TTF_PATH}
 
 # WOFF export
 WOFF_PATH="$DESTINATION/$FILENAME.woff"
-echo "[OTF -> WOFF]: (over-)write to $WOFF_PATH"
+echo "[OTF --> WOFF]: (over-)write to $WOFF_PATH"
 sfnt2woff ${SOURCE} > ${WOFF_PATH}
 
 # WOFF2 export
 WOFF2_PATH="$DESTINATION/$FILENAME.woff2"
 echo "[TTF -> WOFF2]: (over-)write to $WOFF2_PATH"
 woff2_compress ${TTF_PATH} > ${WOFF2_PATH}
+
+exit 0
